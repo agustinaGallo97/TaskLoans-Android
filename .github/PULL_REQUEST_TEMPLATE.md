@@ -1,21 +1,26 @@
-<!-- Short summary of your changes. Explain what have you done and comment the decisions that you may have taken. -->
+## :link: Jira Tracker reference:
+* [Title of the card](https://link-to-pivotal-card)
 
-### Related Trello cards:
-<!-- Add a link for each Trello cards related to this PR. Don't forget to update the cards status in Trello. -->
-
-### Additional Info:
-<!-- Add any information that may help to understand the changes
-Comment additional changes due in this PR that are not directly related to the trello stories -->
-
-### UI preview:
-<!-- Add a some images/gif showing the UI that was affected by your changes, if it applies. -->
-
-<!--
-Also remember to do monkey testing before sending this PR:
-
-```shell
-adb -s 192.168.56.101:5555 shell monkey -p com.xmartlabs.bigbang.template.staging -v 10000
-```
+## Description:
+<!---
+Add a description of the feature or bug you are tackling. First in high level 
+perspective and then you can describe your solution. Include acceptance criteria, 
+diagrams of the code, or anything else you consider that might help other 
+developers understand your decisions.
 -->
 
-/cc @xmartlabs/android
+## :camera_flash: UI preview
+<!--- Add a GIF or screenshot -->
+
+## :pushpin: Notes:
+<!--- 
+* Include pending tasks, TODOs, assumptions, or comments like 'Needs migrating'
+-->
+
+## :warning: Warnings:
+<!---
+* Include a list of considerations for reviewers or future developers. For example:
+* The feature in production triggers a service call so it will charge the account 
+credit card
+* The service X is mocked so this part is not tested
+-->
