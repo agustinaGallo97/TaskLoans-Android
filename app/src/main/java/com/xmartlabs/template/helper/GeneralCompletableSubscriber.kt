@@ -1,18 +1,18 @@
 package com.xmartlabs.template.helper
 
-import android.support.annotation.CheckResult
-import android.support.annotation.StringRes
-import com.xmartlabs.template.ui.common.TemplateView
+import androidx.annotation.CheckResult
+import androidx.annotation.StringRes
+import com.xmartlabs.template.ui.common.ErrorHandlerView
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
-open class GeneralCompletableSubscriber constructor(templateView: TemplateView? = null) : CompletableObserver {
-  private val viewReference = WeakReference<TemplateView>(templateView)
+open class GeneralCompletableSubscriber constructor(errorHandlerView: ErrorHandlerView? = null) : CompletableObserver {
+  private val viewReference = WeakReference<ErrorHandlerView>(errorHandlerView)
 
-  override fun onSubscribe(disposable: Disposable) { }
+  override fun onSubscribe(disposable: Disposable) {}
 
-  override fun onComplete() { }
+  override fun onComplete() {}
 
   override fun onError(throwable: Throwable) {
     val view = viewReference.get()

@@ -1,6 +1,6 @@
 package com.xmartlabs.template.extensions.ui
 
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import com.xmartlabs.template.helper.EmptyOnPageChangeListener
 
 fun ViewPager.nextPage() {

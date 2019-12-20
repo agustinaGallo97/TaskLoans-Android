@@ -1,19 +1,19 @@
 package com.xmartlabs.template.helper
 
-import android.support.annotation.CheckResult
-import android.support.annotation.StringRes
-import com.xmartlabs.template.ui.common.TemplateView
+import androidx.annotation.CheckResult
+import androidx.annotation.StringRes
+import com.xmartlabs.template.ui.common.ErrorHandlerView
 import io.reactivex.FlowableSubscriber
 import org.reactivestreams.Subscription
 import java.lang.ref.WeakReference
 
-open class GeneralFlowableSubscriber<T> constructor(templateView: TemplateView? = null) : FlowableSubscriber<T> {
+open class GeneralFlowableSubscriber<T> constructor(errorHandlerView: ErrorHandlerView? = null) : FlowableSubscriber<T> {
   protected val maxNumberOfElements = java.lang.Long.MAX_VALUE
-  private val viewReference: WeakReference<TemplateView> = WeakReference<TemplateView>(templateView)
+  private val viewReference: WeakReference<ErrorHandlerView> = WeakReference<ErrorHandlerView>(errorHandlerView)
 
   override fun onSubscribe(subscription: Subscription) = subscription.request(maxNumberOfElements)
 
-  override fun onNext(t: T) { }
+  override fun onNext(t: T) {}
 
   override fun onError(throwable: Throwable) {
     val view = viewReference.get()
@@ -22,7 +22,7 @@ open class GeneralFlowableSubscriber<T> constructor(templateView: TemplateView? 
     }
   }
 
-  override fun onComplete() { }
+  override fun onComplete() {}
 
   @StringRes
   protected open fun getErrorMessage(throwable: Throwable): Int? = null

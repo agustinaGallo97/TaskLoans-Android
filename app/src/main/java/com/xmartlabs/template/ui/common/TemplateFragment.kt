@@ -1,29 +1,22 @@
 package com.xmartlabs.template.ui.common
 
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 import com.afollestad.materialdialogs.MaterialDialog
-import com.xmartlabs.bigbang.ui.mvp.BaseMvpFragment
-import com.xmartlabs.bigbang.ui.mvp.MvpPresenter
+import com.xmartlabs.bigbang.ui.BaseFragment
 import com.xmartlabs.template.R
 import io.reactivex.exceptions.CompositeException
 import java.io.IOException
 import java.util.concurrent.CancellationException
 
-abstract class TemplateFragment<V : TemplateView, P : MvpPresenter<V>> : BaseMvpFragment<V, P>(), TemplateView {
-  override val isViewAlive: Boolean
-    get() = isAdded && activity != null
-
-  override fun setup() = Unit
-
-  override fun showError(message: Int, title: Int, buttonTitle: Int) {
-    if (isViewAlive) {
-      context?.let { MaterialDialog.Builder(it)
+abstract class TemplateFragment : BaseFragment(), ErrorHandlerView {
+  fun showError(@StringRes message: Int, @StringRes title: Int, @StringRes buttonTitle: Int) {
+    context?.let {
+      MaterialDialog.Builder(it)
           .title(title)
           .content(message)
           .positiveText(buttonTitle)
           .build()
           .show()
-      }
     }
   }
 
@@ -37,11 +30,11 @@ abstract class TemplateFragment<V : TemplateView, P : MvpPresenter<V>> : BaseMvp
       receiverError = receiverError.exceptions[0]
     }
     if (receiverError is IOException) {
-      showError(R.string.check_your_internet_connection, R.string.no_internet_connection)
+      showError(R.string.check_your_internet_connection, R.string.no_internet_connection, android.R.string.ok)
     } else if (message == null) {
-      showError(R.string.error_service_call_generic)
+      showError(R.string.error_service_call_generic, R.string.error_service_call_generic, android.R.string.ok)
     } else {
-      showError(message)
+      showError(message, R.string.error, android.R.string.ok)
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.xmartlabs.template.helper
 
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 
 open class EmptyOnPageChangeListener : ViewPager.OnPageChangeListener {
   override fun onPageScrollStateChanged(state: Int) = Unit

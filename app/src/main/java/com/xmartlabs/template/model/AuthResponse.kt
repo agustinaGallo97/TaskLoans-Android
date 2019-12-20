@@ -1,11 +1,12 @@
 package com.xmartlabs.template.model
 
-import org.parceler.Parcel
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 //TODO: check service auth response to match app's AuthResponse fields
-@Parcel(Parcel.Serialization.BEAN)
-class AuthResponse {
-  var accessToken: String? = null
-  var scope: String? = null
-  var tokenType: String? = null
-}
+@Parcelize
+data class AuthResponse(
+    val accessToken: String,
+    val scope: String,
+    val tokenType: String
+) : Parcelable

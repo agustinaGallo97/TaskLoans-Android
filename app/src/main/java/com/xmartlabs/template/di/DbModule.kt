@@ -1,8 +1,8 @@
 package com.xmartlabs.template.di
 
 import android.app.Application
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.xmartlabs.template.database.AppDataBase
 import dagger.Module
 import dagger.Provides
