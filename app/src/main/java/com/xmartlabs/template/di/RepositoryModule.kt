@@ -16,5 +16,6 @@ class RepositoryModule {
 
   @Provides
   @Singleton
-  internal fun provideCoreSessionController(sessionRepository: SessionRepository): CoreSessionRepository = sessionRepository
+  internal fun provideCoreSessionController(sessionRepository: SessionRepository): CoreSessionRepository =
+      sessionRepository
 }

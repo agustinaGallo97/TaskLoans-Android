@@ -17,7 +17,7 @@ class StartActivity : BaseAppCompatActivity() {
 
     val session = sessionRepository.session
     if (session == null) {
-      //TODO: handle on start activity no session
+      // TODO: handle on start activity no session
       val intent = Henson.with(context)
           .gotoOnboardingActivity()
           .build()

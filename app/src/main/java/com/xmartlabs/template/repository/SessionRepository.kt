@@ -5,8 +5,8 @@ import com.xmartlabs.bigbang.core.repository.SharedPreferencesSource
 import com.xmartlabs.template.model.Session
 import javax.inject.Inject
 
-class SessionRepository @Inject constructor(sharedPreferencesSource: SharedPreferencesSource)
-  : CoreSessionRepository(sharedPreferencesSource) {
+class SessionRepository @Inject constructor(sharedPreferencesSource: SharedPreferencesSource) :
+  CoreSessionRepository(sharedPreferencesSource) {
   override fun getSessionType() = Session::class.java
 
   var session

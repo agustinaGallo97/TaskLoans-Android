@@ -88,7 +88,7 @@ open class App : Application(), HasActivityInjector {
     private fun initializeThreeTenABP() = AndroidThreeTen.init(this)
 
     private fun initializeLogging() {
-        //TODO: Configure Fabric and add Fabric apiSecret and apiKey properties file in the root folder
+        // TODO: Configure Fabric and add Fabric apiSecret and apiKey properties file in the root folder
         loggerTree.addLogger(CrashlyticsLogger().initialize(buildInfo, this))
         Timber.plant(loggerTree)
 

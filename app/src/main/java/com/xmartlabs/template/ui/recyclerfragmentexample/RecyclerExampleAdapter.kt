@@ -8,8 +8,8 @@ import android.widget.TextView
 
 import com.xmartlabs.template.R
 
-internal class RecyclerExampleAdapter(private val items: List<String>)
-  : RecyclerView.Adapter<RecyclerExampleAdapter.RecyclerExampleViewHolder>() {
+internal class RecyclerExampleAdapter(private val items: List<String>) :
+  RecyclerView.Adapter<RecyclerExampleAdapter.RecyclerExampleViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerExampleViewHolder {
     val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_example, parent, false)

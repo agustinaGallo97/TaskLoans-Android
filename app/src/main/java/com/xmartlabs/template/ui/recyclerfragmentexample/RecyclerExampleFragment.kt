@@ -13,7 +13,7 @@ import java.util.Locale
 @FragmentWithArgs
 class RecyclerExampleFragment : TemplateFragment() {
   override val isViewAlive: Boolean
-    get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+    get() = TODO("not implemented") // To change initializer of created properties use File | Settings | File Templates.
 
   companion object {
     private const val LIST_COUNT = 39

@@ -7,7 +7,8 @@ import io.reactivex.FlowableSubscriber
 import org.reactivestreams.Subscription
 import java.lang.ref.WeakReference
 
-open class GeneralFlowableSubscriber<T> constructor(errorHandlerView: ErrorHandlerView? = null) : FlowableSubscriber<T> {
+open class GeneralFlowableSubscriber<T> constructor(errorHandlerView: ErrorHandlerView? = null) :
+    FlowableSubscriber<T> {
   protected val maxNumberOfElements = java.lang.Long.MAX_VALUE
   private val viewReference: WeakReference<ErrorHandlerView> = WeakReference<ErrorHandlerView>(errorHandlerView)
 
