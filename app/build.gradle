@@ -135,8 +135,9 @@ android {
     }
 }
 
-final ANDROID_SUPPORT_TEST_VERSION = '1.0.2'
+final ANDROID_SUPPORT_TEST_VERSION = '1.1.0'
 final ANDROID_SUPPORT_VERSION = '27.1.1'
+final ANDROID_TEST_RULES = '1.2.0'
 final BIGBANG_VERSION = '03b4b4d73c'
 final DAGGER_VERSION = '2.16'
 final DART_VERSION = '2.0.3'
@@ -174,7 +175,7 @@ dependencies {
     androidTestImplementation 'androidx.legacy:legacy-support-v13:1.0.0'
 
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation "androidx.test:rules:${ANDROID_TEST_RULES}"
     androidTestImplementation('androidx.test.ext:junit:1.1.1') {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
@@ -194,9 +195,12 @@ dependencies {
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
     androidTestImplementation "com.github.andrzejchm.RESTMock:android:${REST_MOCK}"
     androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:${OK_HTTP_IDLING_RESOURCE_VERSION}"
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
-    androidTestImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
-    androidTestImplementation "com.squareup.okio:okio:${OKIO_VERSION}" // Added to prevent dependencies conflict between main and test
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}"
+    // Added to prevent dependencies conflict between main and test
+    androidTestImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
+    // Added to prevent dependencies conflict between main and test
+    androidTestImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
+    // Added to prevent dependencies conflict between main and test
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
@@ -259,11 +263,14 @@ dependencies {
 
     implementation 'javax.annotation:jsr250-api:1.0'
 
-    testImplementation 'androidx.annotation:annotation:1.1.0'
+    testImplementation "androidx.annotation:annotation:${ANDROID_SUPPORT_TEST_VERSION}"
     testImplementation "com.github.andrzejchm.RESTMock:android:${REST_MOCK}"
-    testImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
-    testImplementation "com.squareup.okio:okio:${OKIO_VERSION}" // Added to prevent dependencies conflict between main and test
-    testImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
+    testImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
+    // Added to prevent dependencies conflict between main and test
+    testImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
+    // Added to prevent dependencies conflict between main and test
+    testImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}"
+    // Added to prevent dependencies conflict between main and test
     testImplementation "junit:junit:${JUNIT_VERSION}"
     testImplementation "org.mockito:mockito-core:${MOCKITO_VERSION}"
 }
