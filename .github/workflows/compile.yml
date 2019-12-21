@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run detekt
+      run: ./gradlew detekt
+    - name: Lints
+      run: /gradlew lintDebug
+    - name: Compile
+      run: /gradlew assembleDebug
