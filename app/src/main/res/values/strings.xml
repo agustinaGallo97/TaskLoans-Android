@@ -2,8 +2,6 @@
     <string name="app_name" translatable="false">Template</string>
     <!--TODO: Replace base url with the correct url-->
     <string name="base_url" translatable="false">https://taskloans-staging.herokuapp.com/api/v1/</string>
-    <string name="base_task_url" translatable="false">https://taskloans-staging.herokuapp.com/api/v1/tasks/1/users</string>
-    <string name="balance_task_url" translatable="false">https://taskloans-staging.herokuapp.com/api/v1/tasks/1/balance</string>
     <string name="skip">Skip</string>
     <string name="start">Start</string>
     <string name="next">Next</string>
