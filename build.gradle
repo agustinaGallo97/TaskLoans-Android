@@ -20,7 +20,7 @@ dependencies {
 
 detekt {
     autoCorrect = true
-    toolVersion = "1.0.1"
+    toolVersion = "1.3.0"
     input = files("app/src/main/")
     config = files("config/detekt/detekt.yml")
 }

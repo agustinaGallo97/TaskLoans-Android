@@ -142,7 +142,7 @@ final BIGBANG_VERSION = '03b4b4d73c'
 final DAGGER_VERSION = '2.16'
 final DART_VERSION = '2.0.3'
 final DATABINDING_VERSION = '3.1.4'
-final ESPRESSO_VERSION = '3.0.1'
+final ESPRESSO_VERSION = '3.1.0'
 final FRAGMENTARGS_VERSION = '3.0.2'
 final GSON_VERSION = '2.8.5'
 final JUNIT_VERSION = '4.12'
@@ -187,7 +187,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude module: 'recyclerview-v7'
     }
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0') {
+    androidTestImplementation("androidx.test.espresso:espresso-core:${ESPRESSO_VERSION}") {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
@@ -196,11 +196,8 @@ dependencies {
     androidTestImplementation "com.github.andrzejchm.RESTMock:android:${REST_MOCK}"
     androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:${OK_HTTP_IDLING_RESOURCE_VERSION}"
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}"
-    // Added to prevent dependencies conflict between main and test
     androidTestImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
-    // Added to prevent dependencies conflict between main and test
     androidTestImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
-    // Added to prevent dependencies conflict between main and test
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
@@ -266,11 +263,8 @@ dependencies {
     testImplementation "androidx.annotation:annotation:${ANDROID_SUPPORT_TEST_VERSION}"
     testImplementation "com.github.andrzejchm.RESTMock:android:${REST_MOCK}"
     testImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
-    // Added to prevent dependencies conflict between main and test
     testImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
-    // Added to prevent dependencies conflict between main and test
     testImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}"
-    // Added to prevent dependencies conflict between main and test
     testImplementation "junit:junit:${JUNIT_VERSION}"
     testImplementation "org.mockito:mockito-core:${MOCKITO_VERSION}"
 }
