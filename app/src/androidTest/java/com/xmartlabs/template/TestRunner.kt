@@ -3,8 +3,8 @@ package com.xmartlabs.template
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
-import android.support.test.espresso.IdlingRegistry
-import android.support.test.runner.AndroidJUnitRunner
+import androidx.test.espresso.IdlingRegistry
+import androidx.test.runner.AndroidJUnitRunner
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import com.xmartlabs.bigbang.core.module.OkHttpModule
 import com.xmartlabs.template.common.ImmediateNewThreadScheduler

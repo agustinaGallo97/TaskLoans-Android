@@ -10,5 +10,5 @@ import com.xmartlabs.bigbang.core.model.BuildInfo as CoreBuildInfo
 class AppModule {
   @Provides
   @Singleton
-  fun provideBuildInformation(coreBuildInfo : BuildInfo) : CoreBuildInfo = coreBuildInfo
+  fun provideBuildInformation(coreBuildInfo: BuildInfo): CoreBuildInfo = coreBuildInfo
 }

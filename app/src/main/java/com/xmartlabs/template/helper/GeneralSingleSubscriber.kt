@@ -1,16 +1,16 @@
 package com.xmartlabs.template.helper
 
-import android.support.annotation.CheckResult
-import android.support.annotation.StringRes
-import com.xmartlabs.template.ui.common.TemplateView
+import androidx.annotation.CheckResult
+import androidx.annotation.StringRes
+import com.xmartlabs.template.ui.common.ErrorHandlerView
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
-open class GeneralSingleSubscriber<T> constructor(templateView: TemplateView? = null) : SingleObserver<T> {
-  private val viewReference = WeakReference<TemplateView>(templateView)
+open class GeneralSingleSubscriber<T> constructor(errorHandlerView: ErrorHandlerView? = null) : SingleObserver<T> {
+  private val viewReference = WeakReference<ErrorHandlerView>(errorHandlerView)
 
-  override fun onSubscribe(disposable: Disposable) { }
+  override fun onSubscribe(disposable: Disposable) {}
 
   override fun onError(throwable: Throwable) {
     val view = viewReference.get()
@@ -19,7 +19,7 @@ open class GeneralSingleSubscriber<T> constructor(templateView: TemplateView? = 
     }
   }
 
-  override fun onSuccess(t: T) { }
+  override fun onSuccess(t: T) {}
 
   @StringRes
   protected open fun getErrorMessage(throwable: Throwable): Int? = null
