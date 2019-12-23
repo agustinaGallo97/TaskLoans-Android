@@ -1,6 +1,6 @@
 package com.xmartlabs.template.model
 
 data class Task(
-    var id: String = "",
-    var name: String = ""
+    var id: Int? = 0,
+    var name: String? = ""
 )

@@ -12,15 +12,21 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface TaskService {
-  @GET("/tasks/1/users/{user_id}/entries")
+  companion object {
+    const val BASE_TASK_BALANCE_PATH = "tasks/1/balance"
+    const val BASE_TASK_USER_PATH = "/tasks/1/users"
+    const val ENTRY_PATH = "$BASE_TASK_USER_PATH/{user_id}/entries"
+  }
+
+  @GET(ENTRY_PATH)
   fun getEntries(@Path("user_id") userId: String): Single<List<Entry>>
 
-  @POST("/tasks/1/users/{user_id}/entries")
+  @POST(ENTRY_PATH)
   fun createEntry(@Path("user_id") userId: String, @Body body: EntryRequest): Single<EntryResponse>
 
-  @GET("/tasks/1/users")
+  @GET(BASE_TASK_USER_PATH)
   fun getTaskUsers(): Single<List<User>>
 
-  @GET("tasks/1/balance")
+  @GET(BASE_TASK_BALANCE_PATH)
   fun getTaskBalance(): Single<List<Balance>>
 }
