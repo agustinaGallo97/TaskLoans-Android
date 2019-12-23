@@ -1,8 +1,8 @@
 package com.xmartlabs.template.ui.onboarding
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.xmartlabs.template.ui.onboarding.page.OnboardingPage
 import com.xmartlabs.template.ui.onboarding.page.OnboardingPageFragmentBuilder
 

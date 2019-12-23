@@ -1,7 +1,7 @@
 package com.xmartlabs.template.di
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.xmartlabs.template.ui.login.LoginViewModel
 
 import com.xmartlabs.template.viewmodel.ViewModelFactory

@@ -2,8 +2,8 @@ package com.xmartlabs.template.common
 
 import android.app.Activity
 import android.content.Intent
-import android.support.test.espresso.intent.rule.IntentsTestRule
-import android.support.test.rule.ActivityTestRule
+import androidx.test.espresso.intent.rule.IntentsTestRule
+import androidx.test.rule.ActivityTestRule
 import com.xmartlabs.bigbang.core.extensions.ignoreException
 import com.xmartlabs.bigbang.test.extensions.performClick
 import com.xmartlabs.bigbang.test.helpers.EspressoUtils

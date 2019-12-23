@@ -1,17 +1,16 @@
 package com.xmartlabs.template.helper
 
-import android.support.annotation.CheckResult
-import android.support.annotation.StringRes
-
-import com.xmartlabs.template.ui.common.TemplateView
+import androidx.annotation.CheckResult
+import androidx.annotation.StringRes
+import com.xmartlabs.template.ui.common.ErrorHandlerView
 
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
 
 import java.lang.ref.WeakReference
 
-open class GeneralObservableSubscriber<T> constructor(templateView: TemplateView? = null) : Subscriber<T> {
-  private val viewReference = WeakReference<TemplateView>(templateView)
+open class GeneralObservableSubscriber<T> constructor(errorHandlerView: ErrorHandlerView? = null) : Subscriber<T> {
+  private val viewReference = WeakReference<ErrorHandlerView>(errorHandlerView)
 
   override fun onSubscribe(subscription: Subscription) { }
 

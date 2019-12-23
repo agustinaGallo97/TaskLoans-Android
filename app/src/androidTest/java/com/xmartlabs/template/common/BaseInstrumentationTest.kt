@@ -2,9 +2,9 @@ package com.xmartlabs.template.common
 
 import android.app.Activity
 import android.app.Instrumentation
-import android.support.annotation.CallSuper
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
+import androidx.annotation.CallSuper
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.xmartlabs.bigbang.test.extensions.getFirstActivityInstance
 import io.appflate.restmock.RESTMockServer
 import org.junit.Before

@@ -1,18 +1,18 @@
 buildscript {
     repositories {
+        google()
         jcenter()
         mavenCentral()
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-        classpath 'com.google.gms:google-services:3.3.1'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
+        classpath 'com.google.gms:google-services:4.3.3'
         classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
-        classpath 'io.fabric.tools:gradle:1.25.4'
+        classpath 'io.fabric.tools:gradle:1.26.1'
     }
 }
 
-apply plugin: "io.gitlab.arturbosch.detekt"
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'kotlin-android'
@@ -20,8 +20,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'project-report'
 apply plugin: 'spoon'
-
-apply from: '../detekt.gradle'
 
 def getSignInformation = { keystorePath, keystorePropertyPath ->
     def keyStore = file(keystorePath)
@@ -45,13 +43,13 @@ def getSignInformation = { keystorePath, keystorePropertyPath ->
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.xmartlabs.template"
-        minSdkVersion 19
+        minSdkVersion 21
         multiDexEnabled true
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "${applicationId}.TestRunner"
@@ -132,15 +130,19 @@ android {
             java.srcDirs += sharedTestDir
         }
     }
+    androidExtensions {
+        experimental = true
+    }
 }
 
-final ANDROID_SUPPORT_TEST_VERSION = '1.0.2'
+final ANDROID_SUPPORT_TEST_VERSION = '1.1.0'
 final ANDROID_SUPPORT_VERSION = '27.1.1'
-final BIGBANG_VERSION = 'cf39baa219'
+final ANDROID_TEST_RULES = '1.2.0'
+final BIGBANG_VERSION = '03b4b4d73c'
 final DAGGER_VERSION = '2.16'
 final DART_VERSION = '2.0.3'
 final DATABINDING_VERSION = '3.1.4'
-final ESPRESSO_VERSION = '3.0.1'
+final ESPRESSO_VERSION = '3.1.0'
 final FRAGMENTARGS_VERSION = '3.0.2'
 final GSON_VERSION = '2.8.5'
 final JUNIT_VERSION = '4.12'
@@ -161,23 +163,23 @@ final RETROFIT_VERSION = '2.4.0'
 final ROOM_VERSION = '1.1.0'
 final RXANDROID_VERSION = '2.0.2'
 final RXJAVA_VERSION = '2.1.14'
-final RXLIFECYCLE_VERSION = '2.2.1'
+final RXLIFECYCLE_VERSION = '3.1.0'
 final STETHO_VERSION = '1.5.0'
 final TIMBER_VERSION = '4.7.1'
 final TRACEUR_VERSION = '273cc7d582'
 
 dependencies {
     androidTestImplementation "com.github.xmartlabs.bigbang:instrumental-test:${BIGBANG_VERSION}"
-    androidTestImplementation "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
-    androidTestImplementation "com.android.support:design:${ANDROID_SUPPORT_VERSION}"
-    androidTestImplementation "com.android.support:support-v13:${ANDROID_SUPPORT_VERSION}"
+    androidTestImplementation 'androidx.appcompat:appcompat:1.1.0'
+    androidTestImplementation 'com.google.android.material:material:1.0.0'
+    androidTestImplementation 'androidx.legacy:legacy-support-v13:1.0.0'
 
-    androidTestImplementation "com.android.support:support-annotations:${ANDROID_SUPPORT_VERSION}"
-    androidTestImplementation "com.android.support.test:rules:${ANDROID_SUPPORT_TEST_VERSION}"
-    androidTestImplementation("com.android.support.test:runner:${ANDROID_SUPPORT_TEST_VERSION}") {
+    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+    androidTestImplementation "androidx.test:rules:${ANDROID_TEST_RULES}"
+    androidTestImplementation('androidx.test.ext:junit:1.1.1') {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:${ESPRESSO_VERSION}") {
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.1.0') {
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'design'
@@ -185,30 +187,30 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude module: 'recyclerview-v7'
     }
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:${ESPRESSO_VERSION}") {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:${ESPRESSO_VERSION}"
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
 
-    androidTestImplementation "com.android.support:support-annotations:${ANDROID_SUPPORT_VERSION}"
+    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
     androidTestImplementation "com.github.andrzejchm.RESTMock:android:${REST_MOCK}"
     androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:${OK_HTTP_IDLING_RESOURCE_VERSION}"
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
-    androidTestImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
-    androidTestImplementation "com.squareup.okio:okio:${OKIO_VERSION}" // Added to prevent dependencies conflict between main and test
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}"
+    androidTestImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
+    androidTestImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "android.arch.lifecycle:extensions:${LIFECYCLE_VERSION}"
-    implementation "android.arch.lifecycle:livedata:${LIFECYCLE_VERSION}"
-    implementation "android.arch.lifecycle:reactivestreams:${LIFECYCLE_VERSION}"
-    implementation "android.arch.lifecycle:runtime:${LIFECYCLE_VERSION}"
-    implementation "android.arch.lifecycle:viewmodel:${LIFECYCLE_VERSION}"
-    implementation "android.arch.persistence.room:runtime:${ROOM_VERSION}"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.1.0'
+    implementation 'androidx.room:room-runtime:2.2.3'
     implementation "com.afollestad.material-dialogs:core:${MATERIAL_DIALOGS_VERSION}"
-    implementation "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:design:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:multidex:${MULTIDEX_VERSION}"
-    implementation "com.android.support:support-v13:${ANDROID_SUPPORT_VERSION}"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
     implementation("com.crashlytics.sdk.android:crashlytics:2.9.3@aar") {
         transitive = true
     }
@@ -221,13 +223,13 @@ dependencies {
     implementation "com.github.xmartlabs.bigbang:core:${BIGBANG_VERSION}"
     implementation "com.github.xmartlabs.bigbang:log-crashlytics:${BIGBANG_VERSION}"
     implementation "com.github.xmartlabs.bigbang:retrofit:${BIGBANG_VERSION}"
+    implementation "com.github.xmartlabs.bigbang:mvvm:${BIGBANG_VERSION}"
     implementation "com.github.xmartlabs.bigbang:ui:${BIGBANG_VERSION}"
     implementation "com.github.xmartlabs:Traceur:${TRACEUR_VERSION}"
     implementation "com.google.code.gson:gson:${GSON_VERSION}"
     implementation "com.google.dagger:dagger-android-support:${DAGGER_VERSION}"
     implementation "com.google.dagger:dagger:${DAGGER_VERSION}"
     implementation "com.hannesdorfmann.fragmentargs:annotation:${FRAGMENTARGS_VERSION}"
-    implementation "com.hannesdorfmann.fragmentargs:bundler-parceler:${FRAGMENTARGS_VERSION}"
     implementation "com.jakewharton.threetenabp:threetenabp:${LOCALDATE_BACKPORT_VERSION}"
     implementation "com.jakewharton.timber:timber:${TIMBER_VERSION}"
     implementation "com.squareup.okhttp3:logging-interceptor:${OK_HTTP_VERSION}"
@@ -236,22 +238,19 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:${RETROFIT_VERSION}"
     implementation "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
     implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-components:${RXLIFECYCLE_VERSION}"
-    implementation "com.trello.rxlifecycle2:rxlifecycle:${RXLIFECYCLE_VERSION}"
+    implementation "com.trello.rxlifecycle3:rxlifecycle-components:${RXLIFECYCLE_VERSION}"
+    implementation "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:${RXLIFECYCLE_VERSION}"
     implementation "io.reactivex.rxjava2:rxandroid:${RXANDROID_VERSION}"
     implementation "io.reactivex.rxjava2:rxjava:${RXJAVA_VERSION}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KOTLIN_VERSION}"
-    implementation "org.parceler:parceler-api:${PARCELER_VERSION}"
 
-    kapt "android.arch.lifecycle:compiler:${LIFECYCLE_VERSION}"
-    kapt "android.arch.persistence.room:compiler:${ROOM_VERSION}"
-    kapt "com.android.databinding:compiler:${DATABINDING_VERSION}"
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0'
+    kapt 'androidx.room:room-compiler:2.2.3'
     kapt "com.f2prateek.dart:dart-processor:${DART_VERSION}"
     kapt "com.f2prateek.dart:henson-processor:${DART_VERSION}"
     kapt "com.google.dagger:dagger-android-processor:${DAGGER_VERSION}"
     kapt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
     kapt "com.hannesdorfmann.fragmentargs:processor:${FRAGMENTARGS_VERSION}"
-    kapt "org.parceler:parceler:${PARCELER_VERSION}"
 
     kaptAndroidTest "com.google.dagger:dagger-android-processor:${DAGGER_VERSION}"
     kaptAndroidTest "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
@@ -261,11 +260,11 @@ dependencies {
 
     implementation 'javax.annotation:jsr250-api:1.0'
 
-    testImplementation "com.android.support:support-annotations:${ANDROID_SUPPORT_VERSION}"
+    testImplementation "androidx.annotation:annotation:${ANDROID_SUPPORT_TEST_VERSION}"
     testImplementation "com.github.andrzejchm.RESTMock:android:${REST_MOCK}"
-    testImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
-    testImplementation "com.squareup.okio:okio:${OKIO_VERSION}" // Added to prevent dependencies conflict between main and test
-    testImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}" // Added to prevent dependencies conflict between main and test
+    testImplementation "com.squareup.okhttp3:okhttp:${OK_HTTP_VERSION}"
+    testImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
+    testImplementation "com.squareup.okhttp3:mockwebserver:${OK_HTTP_VERSION}"
     testImplementation "junit:junit:${JUNIT_VERSION}"
     testImplementation "org.mockito:mockito-core:${MOCKITO_VERSION}"
 }
