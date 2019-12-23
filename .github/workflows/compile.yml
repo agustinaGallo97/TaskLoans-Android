@@ -12,6 +12,6 @@ jobs:
     - name: Run detekt
       run: ./gradlew detekt
     - name: Lints
-      run: /gradlew lintDebug
+      run: ./gradlew lintLollipopAndAboveProductionDebug
     - name: Compile
-      run: /gradlew assembleDebug
+      run: ./gradlew assembleLollipopAndAboveProductionDebug
