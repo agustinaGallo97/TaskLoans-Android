@@ -6,10 +6,10 @@ import com.xmartlabs.template.model.Balance
 import com.xmartlabs.template.model.User
 
 data class UserAndBalance(
-    @Embedded val user: User,
+    @Embedded val balance: Balance,
     @Relation(
-        parentColumn = "userId",
-        entityColumn = "userOwnerId"
+        parentColumn = "balanceId",
+        entityColumn = "balanceAssociatedId"
     )
-    val balance: Balance
+    val user: User
 )

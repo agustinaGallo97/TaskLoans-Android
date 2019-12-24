@@ -11,6 +11,11 @@ data class EntryWithUsers(
         parentColumn = "entryId",
         entityColumn = "entryAssociatedId"
     )
-    val userList: List<User>
+    val userList: List<User>,
 
+    @Relation(
+        parentColumn = "entryId",
+        entityColumn = "entryAssociatedToPerformerId"
+    )
+    val user: User
 )

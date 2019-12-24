@@ -8,5 +8,7 @@ data class User(
     @PrimaryKey val userId: Int? = 0,
     val name: String? = null,
     val email: String? = null,
-    val entryAssociatedId: Int? = 0
+    val entryAssociatedId: Int? = 0,
+    val entryAssociatedToPerformerId: Int? = 0,
+    val balanceAssociatedId: Int? = 0
 )

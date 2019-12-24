@@ -8,6 +8,5 @@ import java.util.Date
 data class Entry(
     @PrimaryKey var entryId: Int? = 0,
     val date: Date,
-    var note: String? = null,
-    var performer: User
+    var note: String? = null
 )
