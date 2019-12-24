@@ -1,7 +1,12 @@
 package com.xmartlabs.template.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Balance(
-    var user: User? = null,
-    var favour: Int = 0,
-    var against: Int = 0
+    @PrimaryKey val balanceId: Int? = 0,
+    val userOwnerId: Int? = 0,
+    val favour: Int? = 0,
+    val against: Int? = 0
 )

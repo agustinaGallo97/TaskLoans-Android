@@ -1,6 +1,11 @@
 package com.xmartlabs.template.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Task(
-    var id: Int? = 0,
-    var name: String? = ""
+    @PrimaryKey val taskId: Int? = 0,
+    val userAssociatedId: Int? = 0,
+    val name: String? = null
 )

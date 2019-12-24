@@ -1,7 +1,7 @@
 package com.xmartlabs.template.service
 
-import com.xmartlabs.template.model.UserRequest
-import com.xmartlabs.template.model.UserResponse
+import com.xmartlabs.template.service.request.UserRequest
+import com.xmartlabs.template.service.response.UserResponse
 
 import io.reactivex.Single
 import retrofit2.http.Body
