@@ -1,6 +1,8 @@
 package com.xmartlabs.template.di
 
 import com.xmartlabs.template.service.AuthService
+import com.xmartlabs.template.service.SessionService
+import com.xmartlabs.template.service.TaskService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -11,4 +13,12 @@ class RestServiceModuleApi {
   @Provides
   @Singleton
   internal fun provideAuthService(retrofit: Retrofit) = retrofit.create(AuthService::class.java)
+
+  @Provides
+  @Singleton
+  internal fun provideSessionService(retrofit: Retrofit) = retrofit.create(SessionService::class.java)
+
+  @Provides
+  @Singleton
+  internal fun provideTaskService(retrofit: Retrofit) = retrofit.create(TaskService::class.java)
 }
