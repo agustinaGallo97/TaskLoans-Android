@@ -13,7 +13,15 @@ import com.xmartlabs.template.model.Entry
 import com.xmartlabs.template.model.Task
 import com.xmartlabs.template.model.User
 
-@Database(entities = [Balance::class, Entry::class, Task::class, User::class], version = 1, exportSchema = true)
+@Database(
+    entities = [
+      Balance::class,
+      Entry::class,
+      Task::class,
+      User::class
+    ],
+    version = 1,
+    exportSchema = true)
 @TypeConverters(DateConverter::class)
 abstract class AppDataBase : RoomDatabase() {
   abstract fun balanceDao(): BalanceDao
