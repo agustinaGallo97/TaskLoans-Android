@@ -6,13 +6,11 @@ import com.xmartlabs.template.model.Entry
 import com.xmartlabs.template.model.User
 
 data class EntryWithUsers(
-    @Embedded val entry:Entry,
+    @Embedded val entry: Entry,
     @Relation(
         parentColumn = "entryId",
         entityColumn = "entryAssociatedId"
     )
-    val userList:List<User>
-
-
+    val userList: List<User>
 
 )
