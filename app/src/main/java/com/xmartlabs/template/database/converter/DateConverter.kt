@@ -5,9 +5,7 @@ import java.util.Date
 
 class DateConverter {
   @TypeConverter
-  fun fromDate(date: Date?): Long? {
-    return date?.time
-  }
+  fun fromDate(date: Date?): Long? = date?.time
 
   @TypeConverter
   fun toDate(millisSinceEpoch: Long?): Date? = millisSinceEpoch?.let {
