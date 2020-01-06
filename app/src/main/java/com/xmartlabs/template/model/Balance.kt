@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Balance(
-    @PrimaryKey val balanceId: Int? = 0,
-    val favour: Int? = 0,
-    val against: Int? = 0
+    @PrimaryKey val balanceId: Int? = null,
+    val favour: Int? = null,
+    val against: Int? = null
 )

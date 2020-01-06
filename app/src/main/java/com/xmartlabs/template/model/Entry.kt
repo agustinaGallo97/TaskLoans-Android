@@ -6,7 +6,7 @@ import java.util.Date
 
 @Entity
 data class Entry(
-    @PrimaryKey var entryId: Int? = 0,
+    @PrimaryKey var entryId: Int? = null,
     val date: Date,
     var note: String? = null
 )
