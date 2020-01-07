@@ -2,8 +2,8 @@ package com.xmartlabs.template.service
 
 import com.xmartlabs.template.model.Balance
 import com.xmartlabs.template.model.Entry
-import com.xmartlabs.template.model.EntryRequest
-import com.xmartlabs.template.model.EntryResponse
+import com.xmartlabs.template.service.request.EntryRequest
+import com.xmartlabs.template.service.response.EntryResponse
 import com.xmartlabs.template.model.User
 import io.reactivex.Single
 import retrofit2.http.Body

@@ -1,4 +1,4 @@
-package com.xmartlabs.template.model
+package com.xmartlabs.template.service.request
 
 import java.util.Date
 
