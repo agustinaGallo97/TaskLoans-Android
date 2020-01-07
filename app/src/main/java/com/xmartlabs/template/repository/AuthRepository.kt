@@ -1,27 +1,27 @@
 package com.xmartlabs.template.repository
 
-import androidx.annotation.CheckResult
 import com.xmartlabs.bigbang.core.extensions.applyIoSchedulers
+import com.xmartlabs.bigbang.core.repository.SharedPreferencesSource
+import com.xmartlabs.template.database.dao.UserDao
 import com.xmartlabs.template.model.Session
 import com.xmartlabs.template.service.AuthService
-import io.reactivex.Completable
-import io.reactivex.Single
+import com.xmartlabs.template.service.request.UserRequest
 import javax.inject.Inject
 
-open class AuthRepository @Inject constructor(
+class AuthRepository @Inject constructor(
     private val authService: AuthService,
-    private val sessionRepository: SessionRepository
+    private val sessionRepository: SessionRepository,
+    private val userDao: UserDao,
+    sharedPreferencesSource: SharedPreferencesSource
 ) {
-
-  // TODO: Change signature and method to match authService request to fetch the Access Token
-  val accessToken: Single<out Session>
-    @CheckResult
-    get() = authService.accessToken
-        .applyIoSchedulers()
-        .filter { authResponse -> authResponse.accessToken.isNotEmpty() }
-        .toSingle()
-        .map { Session(it.accessToken) }
-        .doOnSuccess { sessionRepository.session = it }
-
-  open fun signIn() = Completable.error(NotImplementedError())
+  fun signUp(signUpUserRequest: UserRequest) =
+      authService.signUpUser(signUpUserRequest)
+          .applyIoSchedulers()
+          .filter { authResponse -> authResponse.token.isNotEmpty() }
+          .toSingle()
+          .doOnSuccess {
+            sessionRepository.session = Session(it.token)
+            userDao.addUser(it.user)
+          }
+          .map { it.user }
 }

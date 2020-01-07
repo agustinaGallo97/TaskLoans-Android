@@ -1,4 +1,4 @@
-package com.xmartlabs.template.ui.onboarding
+package com.xmartlabs.template.ui.onboardingg
 
 import android.content.Intent
 import android.os.Bundle

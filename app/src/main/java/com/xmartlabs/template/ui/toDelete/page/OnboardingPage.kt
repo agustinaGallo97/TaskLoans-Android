@@ -1,4 +1,4 @@
-package com.xmartlabs.template.ui.onboarding.page
+package com.xmartlabs.template.ui.onboardingg.page
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

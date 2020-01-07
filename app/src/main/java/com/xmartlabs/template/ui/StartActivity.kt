@@ -19,7 +19,7 @@ class StartActivity : BaseAppCompatActivity() {
     if (session == null) {
       // TODO: handle on start activity no session
       val intent = Henson.with(context)
-          .gotoOnboardingActivity()
+          .gotoSignUpActivity()
           .build()
           .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_CLEAR_TASK)
       startActivity(intent)

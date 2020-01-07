@@ -6,7 +6,7 @@ import com.xmartlabs.template.model.Session
 import javax.inject.Inject
 
 class SessionRepository @Inject constructor(sharedPreferencesSource: SharedPreferencesSource) :
-  CoreSessionRepository(sharedPreferencesSource) {
+    CoreSessionRepository(sharedPreferencesSource) {
   override fun getSessionType() = Session::class.java
 
   var session
@@ -14,8 +14,4 @@ class SessionRepository @Inject constructor(sharedPreferencesSource: SharedPrefe
     set(value) {
       value?.let { saveSession(it) } ?: deleteSession()
     }
-
-  fun update(block: (Session?) -> Session) {
-    session = block(session)
-  }
 }
