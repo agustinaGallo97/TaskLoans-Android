@@ -28,6 +28,7 @@ import javax.inject.Singleton
   ServiceGsonModule::class,
   ViewModelModule::class
 ])
+
 @Singleton
 interface ApplicationComponent {
   @Component.Builder

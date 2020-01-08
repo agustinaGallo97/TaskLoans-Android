@@ -4,8 +4,10 @@ import com.xmartlabs.template.model.User
 import com.xmartlabs.template.repository.AuthRepository
 import com.xmartlabs.template.service.request.UserRequest
 import io.reactivex.Single
+import javax.inject.Inject
 
-class SignUpUseCase(private val authRepository: AuthRepository) : BaseSingleUseCase<SignUpUseCase.Params, User>() {
+class SignUpUseCase @Inject constructor(private val authRepository: AuthRepository) :
+    BaseSingleUseCase<SignUpUseCase.Params, User>() {
   class Params(
       val name: String,
       val mail: String,
