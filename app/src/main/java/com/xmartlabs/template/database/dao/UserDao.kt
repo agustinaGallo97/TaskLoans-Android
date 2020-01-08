@@ -13,7 +13,7 @@ interface UserDao {
   @Query("SELECT * FROM user")
   fun getUsers(): LiveData<List<UserWithTaskLists>>
 
-  @Query("SELECT * FROM user WHERE userId=(:id)")
+  @Query("SELECT * FROM user WHERE id=(:id)")
   fun getUser(id: Int): LiveData<UserWithTaskLists?>
 
   @Update

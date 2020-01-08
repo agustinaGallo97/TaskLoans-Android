@@ -43,7 +43,7 @@ abstract class BaseSingleUseCase<in P, R> {
    */
   operator fun invoke(parameters: P): LiveData<Result<R>> {
     val liveCallback: MutableLiveData<Result<R>> = MutableLiveData()
-    this(parameters)
+    this(parameters, liveCallback)
     return liveCallback
   }
 

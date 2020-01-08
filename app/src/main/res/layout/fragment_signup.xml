@@ -45,11 +45,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/user"
-        android:layout_marginEnd="64dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
         android:layout_marginTop="258dp"
         android:textColor="@android:color/black"
         android:textColorHint="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ffffff"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="287dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -60,11 +73,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/mail"
-        android:layout_marginEnd="64dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
         android:layout_marginTop="297dp"
         android:textColor="@android:color/black"
         android:textColorHint="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ffffff"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="326dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -76,11 +102,24 @@
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:layout_marginEnd="64dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
         android:layout_marginTop="338dp"
         android:textColor="@android:color/black"
         android:textColorHint="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ffffff"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="367dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -102,7 +141,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="?android:attr/borderlessButtonStyle" />
+        style="?android:attr/borderlessButtonStyle"
+        />
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

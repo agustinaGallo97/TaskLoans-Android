@@ -7,13 +7,13 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class SignUpUseCase @Inject constructor(private val authRepository: AuthRepository) :
-    BaseSingleUseCase<SignUpUseCase.Params, User>() {
+    BaseSingleUseCase<SignUpUseCase.Params, User?>() {
   class Params(
       val name: String,
       val mail: String,
       val password: String
   )
 
-  override fun execute(parameters: Params): Single<User> =
+  override fun execute(parameters: Params): Single<User?> =
       authRepository.signUp(UserRequest(parameters.name, parameters.mail, parameters.password))
 }

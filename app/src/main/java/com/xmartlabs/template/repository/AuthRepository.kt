@@ -17,8 +17,6 @@ class AuthRepository @Inject constructor(
   fun signUp(signUpUserRequest: UserRequest) =
       authService.signUpUser(signUpUserRequest)
           .applyIoSchedulers()
-          .filter { authResponse -> authResponse.token.isNotEmpty() }
-          .toSingle()
           .doOnSuccess {
             sessionRepository.session = Session(it.token)
             userDao.addUser(it.user)

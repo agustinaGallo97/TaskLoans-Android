@@ -8,7 +8,7 @@ import com.xmartlabs.template.model.User
 data class UserWithTaskLists(
     @Embedded val user: User,
     @Relation(
-        parentColumn = "userId",
+        parentColumn = "id",
         entityColumn = "userAssociatedId"
     )
     val tasks: List<Task>
