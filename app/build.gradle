@@ -140,8 +140,10 @@ android {
 
 final ANDROID_SUPPORT_TEST_VERSION = '1.1.0'
 final ANDROID_SUPPORT_VERSION = '27.1.1'
+final ANDROID_MATERIAL_VERSION = '1.2.0-alpha03'
 final ANDROID_TEST_RULES = '1.2.0'
 final BIGBANG_VERSION = '03b4b4d73c'
+final CONSTRAINT_LAYOUT_VERSION = '1.1.3'
 final DAGGER_VERSION = '2.16'
 final DART_VERSION = '2.0.3'
 final DATABINDING_VERSION = '3.1.4'
@@ -203,7 +205,7 @@ dependencies {
     androidTestImplementation "com.squareup.okio:okio:${OKIO_VERSION}"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.constraintlayout:constraintlayout:${CONSTRAINT_LAYOUT_VERSION}"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.1.0'
@@ -230,6 +232,7 @@ dependencies {
     implementation "com.github.xmartlabs.bigbang:mvvm:${BIGBANG_VERSION}"
     implementation "com.github.xmartlabs.bigbang:ui:${BIGBANG_VERSION}"
     implementation "com.github.xmartlabs:Traceur:${TRACEUR_VERSION}"
+    implementation "com.google.android.material:material:${ANDROID_MATERIAL_VERSION}"
     implementation "com.google.code.gson:gson:${GSON_VERSION}"
     implementation "com.google.dagger:dagger-android-support:${DAGGER_VERSION}"
     implementation "com.google.dagger:dagger:${DAGGER_VERSION}"

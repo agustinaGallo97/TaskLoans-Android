@@ -1,6 +1,7 @@
 package com.xmartlabs.template.service
 
 import com.xmartlabs.template.service.request.UserRequest
+import com.xmartlabs.template.service.response.AuthResponse
 
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -12,8 +13,8 @@ interface AuthService {
     const val SIGN_IN = "signin"
   }
   @POST(SIGN_UP)
-  fun signUpUser(@Body body: UserRequest): Single<com.xmartlabs.template.service.response.AuthResponse>
+  fun signUpUser(@Body body: UserRequest): Single<AuthResponse>
 
   @POST(SIGN_IN)
-  fun signInUser(@Body body: UserRequest): Single<com.xmartlabs.template.service.response.AuthResponse>
+  fun signInUser(@Body body: UserRequest): Single<AuthResponse>
 }

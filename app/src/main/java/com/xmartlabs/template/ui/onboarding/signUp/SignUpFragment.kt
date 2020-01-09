@@ -14,7 +14,7 @@ import javax.inject.Inject
 @FragmentWithArgs
 class SignUpFragment : BaseFragment() {
   companion object {
-    private const val PASSWORD_LENGTH = 8
+    private const val MIN_PASSWORD_LENGTH = 8
   }
 
   override val layoutResId: Int
@@ -28,20 +28,35 @@ class SignUpFragment : BaseFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    signUpButton = view.findViewById(R.id.createAccount)
+    setUpVars(view)
+    signUpViewModelObserver()
+    buttonsListener()
+  }
 
+  private fun setUpVars(view: View) {
+    signUpButton = view.findViewById(R.id.createAccount)
+  }
+
+  private fun signUpViewModelObserver() {
     signUpViewModel.signUp.observe(this, Observer { result ->
       when {
-        result.isSuccess -> Toast.makeText(context, "Signed up correctly", Toast.LENGTH_SHORT).show()
-        result.isFailure -> Toast.makeText(context, "Error, already exists a user with the same mail",
-            Toast.LENGTH_SHORT).show()
+        result.isSuccess -> onSuccessResult()
+        result.isFailure -> onFailureResult()
       }
     })
   }
 
-  override fun onStart() {
-    super.onStart()
+  private fun onFailureResult() {
+    // TODO fix it in the future
+    Toast.makeText(context, "Error, already exists a user with the same mail", Toast.LENGTH_SHORT).show()
+  }
 
+  private fun onSuccessResult() {
+    // TODO fix it in the future
+    Toast.makeText(context, "Signed up correctly", Toast.LENGTH_SHORT).show()
+  }
+
+  private fun buttonsListener() {
     signUpButton.setOnClickListener {
       if (isCorrectRequest()) {
         signUpViewModel.signUp(user.text.toString(), mail.text.toString(), password.text.toString())
@@ -50,19 +65,19 @@ class SignUpFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      (validate(user.text.isNotEmpty(), "Error, name can't be empty") &&
-          validate(isCorrectMail(mail.text.toString()),
-          "Error, invalid mail")) &&
-          (validate(isCorrectPassword(password.text.toString()),
-          "Error, password can't be empty and must has at least 8 characters"))
+      (validateAndShowErrorIfNeeded(user.text.isNotEmpty(), "Error, name can't be empty") &&
+          validateAndShowErrorIfNeeded(isCorrectMail(mail.text.toString()),
+              "Error, invalid mail")) &&
+          (validateAndShowErrorIfNeeded(isCorrectPassword(password.text.toString()),
+              "Error, password can't be empty and must has at least 8 characters"))
 
-  private fun validate(condition: Boolean, message: String): Boolean {
+  private fun validateAndShowErrorIfNeeded(condition: Boolean, message: String): Boolean {
     if (!condition) Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     return condition
   }
 
   private fun isCorrectPassword(password: String): Boolean =
-      password.isNotEmpty() && password.length > PASSWORD_LENGTH
+      password.isNotEmpty() && password.length > MIN_PASSWORD_LENGTH
 
   private fun isCorrectMail(mail: String): Boolean =
       mail.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()

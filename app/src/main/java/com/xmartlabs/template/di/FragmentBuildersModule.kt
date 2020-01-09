@@ -15,9 +15,6 @@ abstract class FragmentBuildersModule {
   abstract fun contributeLoginFragment(): LoginFragment
 
   @ContributesAndroidInjector
-  abstract fun contributeSignUpFragment(): SignUpFragment
-
-  @ContributesAndroidInjector
   abstract fun contributeOnboardingFragment(): OnboardingFragment
 
   @ContributesAndroidInjector
@@ -25,4 +22,7 @@ abstract class FragmentBuildersModule {
 
   @ContributesAndroidInjector
   abstract fun contributeRecyclerExampleFragment(): RecyclerExampleFragment
+
+  @ContributesAndroidInjector
+  abstract fun contributeSignUpFragment(): SignUpFragment
 }
