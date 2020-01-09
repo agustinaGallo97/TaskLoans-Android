@@ -29,7 +29,6 @@ class SignUpFragment : BaseFragment() {
     buttonsListener()
   }
 
-
   private fun signUpViewModelObserver() {
     signUpViewModel.signUp.observe(this, Observer { result ->
       when {
@@ -41,41 +40,47 @@ class SignUpFragment : BaseFragment() {
 
   private fun onFailureResult() {
     // TODO fix it in the future
-    Toast.makeText(context, App.context.resources.getString(R.string.error_user_already_exists), Toast.LENGTH_SHORT).show()
+    Toast.makeText(context, App.context.resources.getString(R.string.error_user_already_exists), Toast.LENGTH_SHORT)
+        .show()
   }
 
   private fun onSuccessResult() {
     // TODO fix it in the future
-    Toast.makeText(context, App.context.resources.getString(R.string.sign_up_correctly), Toast.LENGTH_SHORT).show()
+    Toast.makeText(context, App.context.resources.getString(R.string.sign_up_correctly), Toast.LENGTH_SHORT)
+        .show()
   }
 
   private fun buttonsListener() {
     createAccountButton.setOnClickListener {
       if (isCorrectRequest()) {
         signUpViewModel.signUp(user.text.toString(), mail.text.toString(), password.text.toString())
+      } else {
+        Toast.makeText(context, resources.getString(
+            when {
+              !isCorrectName(user.text.toString()) -> R.string.error_name_empty
+              !isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
+              !isCorrectPassword(password.text.toString()) -> R.string.error_invalid_password
+              else -> R.string.error_check_password
+            }
+        ), Toast.LENGTH_SHORT).show()
       }
     }
   }
 
   private fun isCorrectRequest(): Boolean =
-      (validateAndShowErrorIfNeeded(user.text!!.isNotEmpty(), App.context.resources.getString(R.string.error_invalid_password)) &&
-          validateAndShowErrorIfNeeded(isCorrectMail(mail.text.toString()),
-              App.context.resources.getString(R.string.error_invalid_mail))) &&
-          (validateAndShowErrorIfNeeded(isCorrectPassword(password.text.toString()),
-              App.context.resources.getString(R.string.error_invalid_password)) &&
-              validateAndShowErrorIfNeeded(isSamePassword(password.text.toString(), checkPassword.text.toString()),
-                  App.context.resources.getString(R.string.error_check_password)))
+      (isCorrectName(user.text.toString()) &&
+          isCorrectMail(mail.text.toString())) &&
+          (isCorrectPassword(password.text.toString()) &&
+          isCorrectCheckPassword(password.text.toString(), checkPassword.text.toString()))
 
-  private fun validateAndShowErrorIfNeeded(condition: Boolean, message: String): Boolean {
-    if (!condition) Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    return condition
-  }
-
-  private fun isCorrectPassword(password: String): Boolean =
-      password.isNotEmpty() && password.length > MIN_PASSWORD_LENGTH
+  private fun isCorrectName(name: String) = name.isNotEmpty()
 
   private fun isCorrectMail(mail: String): Boolean =
       mail.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()
 
-  private fun isSamePassword(password: String, checkPassword: String) = (password.isNotEmpty() && password == checkPassword)
+  private fun isCorrectPassword(password: String): Boolean =
+      password.isNotEmpty() && password.length > MIN_PASSWORD_LENGTH
+
+  private fun isCorrectCheckPassword(password: String, checkPassword: String) =
+      (password.isNotEmpty() && password == checkPassword)
 }

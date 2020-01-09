@@ -7,6 +7,10 @@ import com.xmartlabs.template.usecase.internal.Scheduler
 import io.reactivex.Single
 import timber.log.Timber
 
+/*
+ This class is created as a template of each necessary useCase.
+*/
+
 abstract class BaseSingleUseCase<in P, R> {
   protected var taskScheduler: Scheduler = DefaultScheduler
 
@@ -24,12 +28,12 @@ abstract class BaseSingleUseCase<in P, R> {
           execute(parameters).let { useCaseSingleResult ->
             result.postValue(Result.success(useCaseSingleResult.blockingGet())) // TODO: Fix it in the future
           }
-        } catch (e: Exception) {
+        } catch (e: InterruptedException) {
           Timber.e(e)
           result.postValue(Result.failure(e))
         }
       }
-    } catch (e: Exception) {
+    } catch (e: InterruptedException) {
       Timber.d(e)
       result.postValue(Result.failure(e))
     }
@@ -51,7 +55,7 @@ abstract class BaseSingleUseCase<in P, R> {
   fun executeNow(parameters: P) =
       try {
         Result.success(execute(parameters).blockingGet())
-      } catch (e: Exception) {
+      } catch (e: InterruptedException) {
         Result.failure<R>(e)
       }
 

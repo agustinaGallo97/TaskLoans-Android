@@ -28,12 +28,6 @@
             />
 
         <activity
-            android:name=".ui.onboardingg.OnboardingActivity"
-            android:label="@string/onboarding"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TranslucentStatusBar"
-            />
-        <activity
             android:name=".ui.recyclerfragmentexample.RecyclerExampleActivity"
             android:label="@string/recycler_fragment_example"
             android:screenOrientation="portrait"
