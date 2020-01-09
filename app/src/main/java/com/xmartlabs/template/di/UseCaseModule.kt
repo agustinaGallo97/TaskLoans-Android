@@ -19,5 +19,5 @@ class UseCaseModule {
       sessionRepository: SessionRepository,
       sharedPreferencesSource: SharedPreferencesSource,
       userDao: UserDao
-  ): SignUpUseCase = SignUpUseCase(AuthRepository(authService, sessionRepository, userDao, sharedPreferencesSource))
+  ) = SignUpUseCase(AuthRepository(authService, sessionRepository, userDao, sharedPreferencesSource))
 }
