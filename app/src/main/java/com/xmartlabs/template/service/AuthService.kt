@@ -9,12 +9,12 @@ import retrofit2.http.POST
 
 interface AuthService {
   companion object {
-    const val SIGN_UP = "signup"
-    const val SIGN_IN = "signin"
+    private const val URL_SIGN_UP = "signup"
+    private const val URL_SIGN_IN = "signin"
   }
-  @POST(SIGN_UP)
+  @POST(URL_SIGN_UP)
   fun signUpUser(@Body body: UserRequest): Single<AuthResponse>
 
-  @POST(SIGN_IN)
+  @POST(URL_SIGN_IN)
   fun signInUser(@Body body: UserRequest): Single<AuthResponse>
 }

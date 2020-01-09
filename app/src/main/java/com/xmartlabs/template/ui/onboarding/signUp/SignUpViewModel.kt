@@ -10,18 +10,16 @@ import com.xmartlabs.template.usecase.SignUpUseCase
 import javax.inject.Inject
 
 class SignUpViewModel @Inject constructor() : ViewModel() {
-  private val _signUp = MutableLiveData<SignUpUseCase.Params>()
+  private val signUpMutableLiveData = MutableLiveData<SignUpUseCase.Params>()
   @Inject
   lateinit var signUpUseCase: SignUpUseCase
 
-  val signUp: LiveData<Result<User?>>
-    get() =
-      Transformations.switchMap(_signUp) { params ->
-        signUpUseCase.invoke(params)
-      }
+  val signUp: LiveData<Result<User?>> = Transformations.switchMap(signUpMutableLiveData) { params ->
+    signUpUseCase.invoke(params)
+  }
 
   @MainThread
   fun signUp(name: String, mail: String, password: String) {
-    _signUp.value = SignUpUseCase.Params(name, mail, password)
+    signUpMutableLiveData.value = SignUpUseCase.Params(name, mail, password)
   }
 }

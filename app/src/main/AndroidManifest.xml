@@ -38,7 +38,10 @@
             android:label="@string/recycler_fragment_example"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.StartActivity">
+        <activity
+            android:name=".ui.StartActivity"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

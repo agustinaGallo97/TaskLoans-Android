@@ -2,11 +2,11 @@ package com.xmartlabs.template.ui.onboarding.signUp
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.xmartlabs.bigbang.ui.BaseFragment
+import com.xmartlabs.template.App
 import com.xmartlabs.template.R
 import kotlinx.android.synthetic.main.fragment_signup.*
 import javax.inject.Inject
@@ -17,25 +17,18 @@ class SignUpFragment : BaseFragment() {
     private const val MIN_PASSWORD_LENGTH = 8
   }
 
-  override val layoutResId: Int
-    get() = R.layout.fragment_signup
+  override val layoutResId = R.layout.fragment_signup
 
   @Inject
   lateinit var signUpViewModel: SignUpViewModel
 
-  private lateinit var signUpButton: Button
-
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    setUpVars(view)
     signUpViewModelObserver()
     buttonsListener()
   }
 
-  private fun setUpVars(view: View) {
-    signUpButton = view.findViewById(R.id.createAccount)
-  }
 
   private fun signUpViewModelObserver() {
     signUpViewModel.signUp.observe(this, Observer { result ->
@@ -48,16 +41,16 @@ class SignUpFragment : BaseFragment() {
 
   private fun onFailureResult() {
     // TODO fix it in the future
-    Toast.makeText(context, "Error, already exists a user with the same mail", Toast.LENGTH_SHORT).show()
+    Toast.makeText(context, App.context.resources.getString(R.string.error_user_already_exists), Toast.LENGTH_SHORT).show()
   }
 
   private fun onSuccessResult() {
     // TODO fix it in the future
-    Toast.makeText(context, "Signed up correctly", Toast.LENGTH_SHORT).show()
+    Toast.makeText(context, App.context.resources.getString(R.string.sign_up_correctly), Toast.LENGTH_SHORT).show()
   }
 
   private fun buttonsListener() {
-    signUpButton.setOnClickListener {
+    createAccountButton.setOnClickListener {
       if (isCorrectRequest()) {
         signUpViewModel.signUp(user.text.toString(), mail.text.toString(), password.text.toString())
       }
@@ -65,11 +58,13 @@ class SignUpFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      (validateAndShowErrorIfNeeded(user.text.isNotEmpty(), "Error, name can't be empty") &&
+      (validateAndShowErrorIfNeeded(user.text!!.isNotEmpty(), App.context.resources.getString(R.string.error_invalid_password)) &&
           validateAndShowErrorIfNeeded(isCorrectMail(mail.text.toString()),
-              "Error, invalid mail")) &&
+              App.context.resources.getString(R.string.error_invalid_mail))) &&
           (validateAndShowErrorIfNeeded(isCorrectPassword(password.text.toString()),
-              "Error, password can't be empty and must has at least 8 characters"))
+              App.context.resources.getString(R.string.error_invalid_password)) &&
+              validateAndShowErrorIfNeeded(isSamePassword(password.text.toString(), checkPassword.text.toString()),
+                  App.context.resources.getString(R.string.error_check_password)))
 
   private fun validateAndShowErrorIfNeeded(condition: Boolean, message: String): Boolean {
     if (!condition) Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
@@ -81,4 +76,6 @@ class SignUpFragment : BaseFragment() {
 
   private fun isCorrectMail(mail: String): Boolean =
       mail.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()
+
+  private fun isSamePassword(password: String, checkPassword: String) = (password.isNotEmpty() && password == checkPassword)
 }
