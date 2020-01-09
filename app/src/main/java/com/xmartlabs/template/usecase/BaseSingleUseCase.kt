@@ -22,18 +22,19 @@ abstract class BaseSingleUseCase<in P, R> {
    */
   operator fun invoke(parameters: P, result: MutableLiveData<Result<R>>) {
     // result.value = Result.Loading TODO: add data to Loading to avoid glitches
+    @Suppress("TooGenericExceptionCaught")
     try {
       taskScheduler.execute {
         try {
           execute(parameters).let { useCaseSingleResult ->
             result.postValue(Result.success(useCaseSingleResult.blockingGet())) // TODO: Fix it in the future
           }
-        } catch (e: InterruptedException) {
+        } catch (e: Exception) {
           Timber.e(e)
           result.postValue(Result.failure(e))
         }
       }
-    } catch (e: InterruptedException) {
+    } catch (e: Exception) {
       Timber.d(e)
       result.postValue(Result.failure(e))
     }
@@ -53,9 +54,10 @@ abstract class BaseSingleUseCase<in P, R> {
 
   /** Executes the use case synchronously  */
   fun executeNow(parameters: P) =
+      @Suppress("TooGenericExceptionCaught")
       try {
         Result.success(execute(parameters).blockingGet())
-      } catch (e: InterruptedException) {
+      } catch (e: Exception) {
         Result.failure<R>(e)
       }
 
