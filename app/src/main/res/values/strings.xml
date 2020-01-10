@@ -28,10 +28,14 @@
     <string name="create_account">Create account</string>
     <string name="title">Taskloans</string>
     <string name="sign_up_correctly">Signed up correctly</string>
+    <string name="sign_in_correctly">Correct login</string>
+    <string name="sign_in">Entrar</string>
+    <string name="without_account">No account? <u>Create an account</u> </string>
 
     <string name="error_user_already_exists">Error, already exists a user with the same mail</string>
     <string name="error_name_empty">Error, name can not be empty</string>
     <string name="error_invalid_mail">Error, invalid mail</string>
     <string name="error_invalid_password">Error, password can not be empty and must has at least 8 characters</string>
     <string name="error_check_password">Error, incorrect check password</string>
+    <string name="error_incorrect_login">Error, your mail or password is incorrect.</string>
 </resources>

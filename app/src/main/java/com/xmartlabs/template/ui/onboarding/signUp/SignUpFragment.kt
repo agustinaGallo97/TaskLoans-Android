@@ -8,15 +8,12 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.xmartlabs.bigbang.ui.BaseFragment
 import com.xmartlabs.template.App
 import com.xmartlabs.template.R
+import com.xmartlabs.template.helper.OnBoardingValidator
 import kotlinx.android.synthetic.main.fragment_signup.*
 import javax.inject.Inject
 
 @FragmentWithArgs
 class SignUpFragment : BaseFragment() {
-  companion object {
-    private const val MIN_PASSWORD_LENGTH = 8
-  }
-
   override val layoutResId = R.layout.fragment_signup
 
   @Inject
@@ -39,7 +36,6 @@ class SignUpFragment : BaseFragment() {
   }
 
   private fun onFailureResult() {
-    // TODO fix it in the future
     Toast.makeText(context, App.context.resources.getString(R.string.error_user_already_exists), Toast.LENGTH_SHORT)
         .show()
   }
@@ -57,9 +53,9 @@ class SignUpFragment : BaseFragment() {
       } else {
         Toast.makeText(context, resources.getString(
             when {
-              !isCorrectName(user.text.toString()) -> R.string.error_name_empty
-              !isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
-              !isCorrectPassword(password.text.toString()) -> R.string.error_invalid_password
+              !OnBoardingValidator.isCorrectName(user.text.toString()) -> R.string.error_name_empty
+              !OnBoardingValidator.isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
+              !OnBoardingValidator.isCorrectPassword(password.text.toString()) -> R.string.error_invalid_password
               else -> R.string.error_check_password
             }
         ), Toast.LENGTH_SHORT).show()
@@ -68,19 +64,8 @@ class SignUpFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      (isCorrectName(user.text.toString()) &&
-          isCorrectMail(mail.text.toString())) &&
-          (isCorrectPassword(password.text.toString()) &&
-          isCorrectCheckPassword(password.text.toString(), checkPassword.text.toString()))
-
-  private fun isCorrectName(name: String) = name.isNotEmpty()
-
-  private fun isCorrectMail(mail: String): Boolean =
-      mail.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()
-
-  private fun isCorrectPassword(password: String): Boolean =
-      password.isNotEmpty() && password.length > MIN_PASSWORD_LENGTH
-
-  private fun isCorrectCheckPassword(password: String, checkPassword: String) =
-      (password.isNotEmpty() && password == checkPassword)
+      (OnBoardingValidator.isCorrectName(user.text.toString()) &&
+          OnBoardingValidator.isCorrectMail(mail.text.toString())) &&
+          (OnBoardingValidator.isCorrectPassword(password.text.toString()) &&
+              OnBoardingValidator.isCorrectCheckPassword(password.text.toString(), checkPassword.text.toString()))
 }

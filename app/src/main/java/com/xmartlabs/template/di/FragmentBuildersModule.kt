@@ -1,6 +1,7 @@
 package com.xmartlabs.template.di
 
 import com.xmartlabs.template.ui.login.LoginFragment
+import com.xmartlabs.template.ui.onboarding.signIn.SignInFragment
 import com.xmartlabs.template.ui.onboarding.signUp.SignUpFragment
 import com.xmartlabs.template.ui.recyclerfragmentexample.RecyclerExampleFragment
 import dagger.Module
@@ -17,4 +18,7 @@ abstract class FragmentBuildersModule {
 
   @ContributesAndroidInjector
   abstract fun contributeSignUpFragment(): SignUpFragment
+
+  @ContributesAndroidInjector
+  abstract fun contributeSignInFragment(): SignInFragment
 }
