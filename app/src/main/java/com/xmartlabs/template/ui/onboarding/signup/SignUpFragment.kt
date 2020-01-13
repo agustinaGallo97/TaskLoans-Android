@@ -72,11 +72,11 @@ class SignUpFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      (isCorrectName(userTextInputEditText.text.toString()) &&
-          isCorrectMail(mailTextInputEditText.text.toString())) &&
-          (isCorrectPassword(passwordTextInputEditText.text.toString()) &&
+      isCorrectName(userTextInputEditText.text.toString()) &&
+          isCorrectMail(mailTextInputEditText.text.toString()) &&
+          isCorrectPassword(passwordTextInputEditText.text.toString()) &&
               isCorrectCheckPassword(passwordTextInputEditText.text.toString(),
-                  checkPasswordTextInputEditText.text.toString()))
+                  checkPasswordTextInputEditText.text.toString())
 
   private fun isCorrectName(name: String) = name.isNotEmpty()
 
@@ -87,5 +87,5 @@ class SignUpFragment : BaseFragment() {
       password.isNotEmpty() && password.length > MIN_PASSWORD_LENGTH
 
   private fun isCorrectCheckPassword(password: String, checkPassword: String) =
-      (password.isNotEmpty() && password == checkPassword)
+      password.isNotEmpty() && password == checkPassword
 }
