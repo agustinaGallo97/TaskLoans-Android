@@ -2,6 +2,9 @@ package com.xmartlabs.taskloans.usecase.internal
 
 /*
  This class is created to control the handle of operations.
+ The source of this class is:
+         https://github.com/google/iosched/blob/master/shared/src/main/java/com/google/samples/apps/iosched/shared
+         /domain/internal/TaskScheduler.kt
 */
 
 import android.os.Handler

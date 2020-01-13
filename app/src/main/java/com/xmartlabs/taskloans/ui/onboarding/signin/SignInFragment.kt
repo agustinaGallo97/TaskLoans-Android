@@ -9,7 +9,8 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.xmartlabs.bigbang.ui.BaseFragment
 import com.xmartlabs.taskloans.App
 import com.xmartlabs.taskloans.R
-import com.xmartlabs.taskloans.helper.OnBoardingValidator
+import com.xmartlabs.taskloans.helper.isCorrectMail
+import com.xmartlabs.taskloans.helper.isCorrectPassword
 import com.xmartlabs.taskloans.ui.Henson
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import javax.inject.Inject
@@ -60,7 +61,7 @@ class SignInFragment : BaseFragment() {
       } else {
         Toast.makeText(context, resources.getString(
             when {
-              !OnBoardingValidator.isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
+              !isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
               else -> R.string.error_invalid_password
             }
         ), Toast.LENGTH_SHORT).show()
@@ -79,6 +80,6 @@ class SignInFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      OnBoardingValidator.isCorrectMail(mail.text.toString()) &&
-          OnBoardingValidator.isCorrectPassword(password.text.toString())
+      isCorrectMail(mail.text.toString()) &&
+          isCorrectPassword(password.text.toString())
 }

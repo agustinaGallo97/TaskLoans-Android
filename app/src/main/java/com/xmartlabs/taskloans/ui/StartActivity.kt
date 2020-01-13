@@ -15,6 +15,7 @@ class StartActivity : BaseAppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
+    //TODO: I comment those lines just to can run the project
 //    val session = sessionRepository.session
 //    if (session == null) {
 //      // TODO: handle on start activity no session

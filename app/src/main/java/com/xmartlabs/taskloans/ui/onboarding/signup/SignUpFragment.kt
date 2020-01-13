@@ -8,7 +8,10 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.xmartlabs.bigbang.ui.BaseFragment
 import com.xmartlabs.taskloans.App
 import com.xmartlabs.taskloans.R
-import com.xmartlabs.taskloans.helper.OnBoardingValidator
+import com.xmartlabs.taskloans.helper.isCorrectCheckPassword
+import com.xmartlabs.taskloans.helper.isCorrectMail
+import com.xmartlabs.taskloans.helper.isCorrectName
+import com.xmartlabs.taskloans.helper.isCorrectPassword
 import kotlinx.android.synthetic.main.fragment_signup.*
 import javax.inject.Inject
 
@@ -53,9 +56,9 @@ class SignUpFragment : BaseFragment() {
       } else {
         Toast.makeText(context, resources.getString(
             when {
-              !OnBoardingValidator.isCorrectName(user.text.toString()) -> R.string.error_name_empty
-              !OnBoardingValidator.isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
-              !OnBoardingValidator.isCorrectPassword(password.text.toString()) -> R.string.error_invalid_password
+              !isCorrectName(user.text.toString()) -> R.string.error_name_empty
+              !isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
+              !isCorrectPassword(password.text.toString()) -> R.string.error_invalid_password
               else -> R.string.error_check_password
             }
         ), Toast.LENGTH_SHORT).show()
@@ -64,8 +67,8 @@ class SignUpFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      (OnBoardingValidator.isCorrectName(user.text.toString()) &&
-          OnBoardingValidator.isCorrectMail(mail.text.toString())) &&
-          (OnBoardingValidator.isCorrectPassword(password.text.toString()) &&
-              OnBoardingValidator.isCorrectCheckPassword(password.text.toString(), checkPassword.text.toString()))
+      isCorrectName(user.text.toString()) &&
+          isCorrectMail(mail.text.toString()) &&
+          isCorrectPassword(password.text.toString()) &&
+          isCorrectCheckPassword(password.text.toString(), checkPassword.text.toString())
 }
