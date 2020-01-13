@@ -1,4 +1,4 @@
-package com.xmartlabs.template.ui.onboarding.signUp
+package com.xmartlabs.template.ui.onboarding.signup
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData

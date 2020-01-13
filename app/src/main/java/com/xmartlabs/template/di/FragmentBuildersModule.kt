@@ -1,7 +1,7 @@
 package com.xmartlabs.template.di
 
 import com.xmartlabs.template.ui.login.LoginFragment
-import com.xmartlabs.template.ui.onboarding.signUp.SignUpFragment
+import com.xmartlabs.template.ui.onboarding.signup.SignUpFragment
 import com.xmartlabs.template.ui.recyclerfragmentexample.RecyclerExampleFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

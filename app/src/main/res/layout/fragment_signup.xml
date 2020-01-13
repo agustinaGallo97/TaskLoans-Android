@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/iconImageView"
         android:layout_width="62dp"
         android:layout_height="49dp"
         android:layout_marginBottom="88dp"
@@ -22,7 +22,7 @@
         />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="450dp"
@@ -33,12 +33,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/icon"
+        app:layout_constraintTop_toBottomOf="@id/iconImageView"
         style="@style/TitleStyle"
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userTextField"
+        android:id="@+id/userTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/user"
@@ -47,11 +47,11 @@
         android:layout_marginTop="69dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/user"
+            android:id="@+id/userTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -59,7 +59,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mailTextField"
+        android:id="@+id/mailTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/mail"
@@ -67,11 +67,11 @@
         android:layout_marginRight="64dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userTextField"
+        app:layout_constraintTop_toBottomOf="@+id/userTextInputLayout"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mail"
+            android:id="@+id/mailTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -79,7 +79,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTextField"
+        android:id="@+id/passwordTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
@@ -88,11 +88,11 @@
         app:endIconMode="password_toggle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mailTextField"
+        app:layout_constraintTop_toBottomOf="@+id/mailTextInputLayout"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/passwordTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -101,7 +101,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/checkPasswordTextField"
+        android:id="@+id/checkPasswordTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password_check"
@@ -110,11 +110,11 @@
         app:endIconMode="password_toggle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextField"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/checkPassword"
+            android:id="@+id/checkPasswordTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -133,7 +133,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkPasswordTextField"
+        app:layout_constraintTop_toBottomOf="@+id/checkPasswordTextInputLayout"
         style="@style/ButtonSignUpStyle"
         />
     />

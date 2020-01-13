@@ -14,7 +14,7 @@
         >
 
         <activity
-            android:name=".ui.onboarding.signUp.SignUpActivity"
+            android:name=".ui.onboarding.signup.SignUpActivity"
             android:label="Signup"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TranslucentStatusBar"
