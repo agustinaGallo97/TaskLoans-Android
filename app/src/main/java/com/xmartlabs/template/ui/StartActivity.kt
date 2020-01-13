@@ -23,7 +23,6 @@ class StartActivity : BaseAppCompatActivity() {
           .build()
           .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_CLEAR_TASK)
       startActivity(intent)
-
     } else {
       TODO("Handle on start activity with session")
     }
