@@ -57,11 +57,11 @@ class SignInFragment : BaseFragment() {
   private fun loginButtonListener() {
     loginButton.setOnClickListener {
       if (isCorrectRequest()) {
-        signInViewModel.signIn(mail.text.toString(), password.text.toString())
+        signInViewModel.signIn(mailTextInputEditText.text.toString(), passwordTextInputEditText.text.toString())
       } else {
         Toast.makeText(context, resources.getString(
             when {
-              !isCorrectMail(mail.text.toString()) -> R.string.error_invalid_mail
+              !isCorrectMail(mailTextInputEditText.text.toString()) -> R.string.error_invalid_mail
               else -> R.string.error_invalid_password
             }
         ), Toast.LENGTH_SHORT).show()
@@ -80,6 +80,6 @@ class SignInFragment : BaseFragment() {
   }
 
   private fun isCorrectRequest(): Boolean =
-      isCorrectMail(mail.text.toString()) &&
-          isCorrectPassword(password.text.toString())
+      isCorrectMail(mailTextInputEditText.text.toString()) &&
+          isCorrectPassword(passwordTextInputEditText.text.toString())
 }

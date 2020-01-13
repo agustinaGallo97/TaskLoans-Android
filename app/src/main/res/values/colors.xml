@@ -4,4 +4,11 @@
     <color name="colorPrimary">#ffff</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="black">@android:color/black</color>
+    <color name="rosy_pink">#ef6a6e</color>
+    <color name="warm_grey">#979797</color>
+    <color name="melon">#ff8256</color>
+    <color name="darkish_purple">#761371</color>
+    <color name="red_violet">#9d0066</color>
+    <color name="butterscotch">#fac633</color>
+    <color name="grey">#e2e2e2</color>
 </resources>
