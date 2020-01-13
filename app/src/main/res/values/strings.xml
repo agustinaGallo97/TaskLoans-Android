@@ -22,4 +22,16 @@
     <string name="example_empty_view">Empty View Example</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="user">User</string>
+    <string name="mail">Mail</string>
+    <string name="password_check">Check password</string>
+    <string name="create_account">Create account</string>
+    <string name="title">Taskloans</string>
+    <string name="sign_up_correctly">Signed up correctly</string>
+
+    <string name="error_user_already_exists">Error, already exists a user with the same mail</string>
+    <string name="error_name_empty">Error, name can not be empty</string>
+    <string name="error_invalid_mail">Error, invalid mail</string>
+    <string name="error_invalid_password">Error, password can not be empty and must has at least 8 characters</string>
+    <string name="error_check_password">Error, incorrect check password</string>
 </resources>

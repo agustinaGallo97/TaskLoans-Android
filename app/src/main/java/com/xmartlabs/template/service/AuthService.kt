@@ -1,17 +1,20 @@
 package com.xmartlabs.template.service
 
-import com.xmartlabs.template.model.AuthResponse
+import com.xmartlabs.template.service.request.UserRequest
+import com.xmartlabs.template.service.response.AuthResponse
 
 import io.reactivex.Single
+import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AuthService {
   companion object {
-    // TODO: replace with url path to get access token
-    const val URL_ACCESS_TOKEN = "accessToken"
+    private const val URL_SIGN_UP = "signup"
+    private const val URL_SIGN_IN = "signin"
   }
+  @POST(URL_SIGN_UP)
+  fun signUpUser(@Body body: UserRequest): Single<AuthResponse>
 
-  // TODO: change signature to the required one to fetch the access token and check AuthResponse to match response
-  @get:POST(URL_ACCESS_TOKEN)
-  val accessToken: Single<AuthResponse>
+  @POST(URL_SIGN_IN)
+  fun signInUser(@Body body: UserRequest): Single<AuthResponse>
 }

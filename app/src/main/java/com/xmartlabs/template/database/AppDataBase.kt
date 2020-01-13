@@ -20,7 +20,7 @@ import com.xmartlabs.template.model.User
       Task::class,
       User::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true)
 @TypeConverters(DateConverter::class)
 abstract class AppDataBase : RoomDatabase() {
