@@ -1,4 +1,4 @@
 <resources>
     <string translatable="false" name="app_name">Template STA</string>
-    <string translatable="false" name="url_prefix_redirect">staging.template.com</string>
+    <string translatable="false" name="url_prefix_redirect">staging.taskloans.com</string>
 </resources>
