@@ -12,6 +12,7 @@
                 android:startColor="#9d0066"
                 android:type="linear"
                 />
+                
         </shape>
     </item>
 
