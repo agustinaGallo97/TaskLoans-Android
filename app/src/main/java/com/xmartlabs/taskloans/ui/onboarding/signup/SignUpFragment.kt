@@ -26,7 +26,7 @@ class SignUpFragment : BaseFragment() {
     super.onViewCreated(view, savedInstanceState)
 
     signUpViewModelObserver()
-    buttonsListener()
+    setUpListeners()
   }
 
   private fun signUpViewModelObserver() {
@@ -38,43 +38,37 @@ class SignUpFragment : BaseFragment() {
     })
   }
 
-  private fun onSignUpFailure() {
-    // TODO fix it in the future
-    Toast.makeText(context, App.context.resources.getString(R.string.error_user_already_exists), Toast.LENGTH_SHORT)
-        .show()
-  }
+  private fun onSignUpFailure() =
+      Toast.makeText(context, App.context.resources.getString(R.string.error_user_already_exists), Toast.LENGTH_SHORT)
+          .show()
 
-  private fun onSignUpSuccess() {
-    // TODO fix it in the future
-    Toast.makeText(context, App.context.resources.getString(R.string.sign_up_correctly), Toast.LENGTH_SHORT)
-        .show()
-  }
+  private fun onSignUpSuccess() =
+      Toast.makeText(context, App.context.resources.getString(R.string.sign_up_correctly), Toast.LENGTH_SHORT)
+          .show()
 
-  private fun buttonsListener() {
-    createAccountButton.setOnClickListener {
-      if (isCorrectRequest()) {
-        signUpViewModel.signUp(
-            userTextInputEditText.text.toString(),
-            mailTextInputEditText.text.toString(),
-            passwordTextInputEditText.text.toString()
-        )
-      } else {
-        Toast.makeText(context, resources.getString(
-            when {
-              !isCorrectName(userTextInputEditText.text.toString()) -> R.string.error_name_empty
-              !isCorrectMail(mailTextInputEditText.text.toString()) -> R.string.error_invalid_mail
-              !isCorrectPassword(passwordTextInputEditText.text.toString()) -> R.string.error_invalid_password
-              else -> R.string.error_check_password
-            }
-        ), Toast.LENGTH_SHORT).show()
+  private fun setUpListeners() =
+      createAccountButton.setOnClickListener {
+        if (isCorrectRequest()) {
+          signUpViewModel.signUp(
+              userTextInputEditText.text.toString(),
+              mailTextInputEditText.text.toString(),
+              passwordTextInputEditText.text.toString()
+          )
+        } else {
+          Toast.makeText(context, resources.getString(
+              when {
+                !isCorrectName(userTextInputEditText.text.toString()) -> R.string.error_name_empty
+                !isCorrectMail(mailTextInputEditText.text.toString()) -> R.string.error_invalid_mail
+                !isCorrectPassword(passwordTextInputEditText.text.toString()) -> R.string.error_invalid_password
+                else -> R.string.error_check_password
+              }
+          ), Toast.LENGTH_SHORT).show()
+        }
       }
-    }
-  }
 
-  private fun isCorrectRequest(): Boolean =
-      isCorrectName(userTextInputEditText.text.toString()) &&
-          isCorrectMail(mailTextInputEditText.text.toString()) &&
-          isCorrectPassword(passwordTextInputEditText.text.toString()) &&
-          isCorrectCheckPassword(passwordTextInputEditText.text.toString(),
-              checkPasswordTextInputEditText.text.toString())
+  private fun isCorrectRequest() = isCorrectName(userTextInputEditText.text.toString()) &&
+      isCorrectMail(mailTextInputEditText.text.toString()) &&
+      isCorrectPassword(passwordTextInputEditText.text.toString()) &&
+      isCorrectCheckPassword(passwordTextInputEditText.text.toString(),
+      checkPasswordTextInputEditText.text.toString())
 }
