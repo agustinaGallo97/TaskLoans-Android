@@ -22,4 +22,12 @@ class AuthRepository @Inject constructor(
             userDao.addUser(it.user)
           }
           .map { it.user }
+
+  fun signIn(signInUserRequest: UserRequest) =
+      authService.signInUser(signInUserRequest)
+          .applyIoSchedulers()
+          .doOnSuccess {
+            sessionRepository.session = Session(it.token)
+          }
+          .map { it.user }
 }

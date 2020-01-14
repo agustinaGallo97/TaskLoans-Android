@@ -9,6 +9,9 @@ import timber.log.Timber
 
 /*
  This class is created as a template of each necessary useCase.
+ The source of this class is:
+        https://github.com/google/iosched/blob/master/shared/src/main/java/com/google/samples/apps/iosched
+        /shared/domain/UseCase.kt
 */
 
 abstract class BaseSingleUseCase<in P, R> {

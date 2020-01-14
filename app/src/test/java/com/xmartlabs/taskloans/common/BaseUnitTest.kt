@@ -1,7 +1,6 @@
 package com.xmartlabs.taskloans.common
 
 import com.xmartlabs.taskloans.App
-import com.xmartlabs.taskloans.di.DaggerApplicationComponent
 import com.xmartlabs.taskloans.di.MockAndroidModule
 import com.xmartlabs.taskloans.di.MockClockModule
 import com.xmartlabs.taskloans.di.MockRestServiceModule

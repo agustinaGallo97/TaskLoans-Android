@@ -39,7 +39,6 @@
         android:minHeight="40dp"
         android:minWidth="148dp"
         android:text="@string/start"
-        style="@style/Button.Default"
         />
 
     <TextView
