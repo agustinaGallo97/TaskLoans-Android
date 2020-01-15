@@ -1,6 +1,5 @@
 package com.xmartlabs.taskloans.ui.onboarding.signin
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,18 +8,18 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.xmartlabs.bigbang.ui.BaseFragment
 import com.xmartlabs.taskloans.App
 import com.xmartlabs.taskloans.R
+import com.xmartlabs.taskloans.helper.Router
 import com.xmartlabs.taskloans.helper.isCorrectMail
 import com.xmartlabs.taskloans.helper.isCorrectPassword
-import com.xmartlabs.taskloans.ui.Henson
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import javax.inject.Inject
 
 @FragmentWithArgs
 class SignInFragment : BaseFragment() {
-  override val layoutResId = R.layout.fragment_sign_in
-
   @Inject
   lateinit var signInViewModel: SignInViewModel
+
+  override val layoutResId = R.layout.fragment_sign_in
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -43,11 +42,7 @@ class SignInFragment : BaseFragment() {
           .show()
 
   private fun onSignInSuccess() {
-    val intent = Henson.with(context)
-        .gotoDashboardActivity()
-        .build()
-        .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-    startActivity(intent)
+    Router.goToDashboardActivity(this)
   }
 
   private fun setUpListeners() {
@@ -71,11 +66,7 @@ class SignInFragment : BaseFragment() {
 
   private fun setUpCreateAccountTextViewListener() =
       createAccountTextView.setOnClickListener {
-        val intent = Henson.with(context)
-            .gotoSignUpActivity()
-            .build()
-            .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
+        Router.goToSignUpActivity(this)
       }
 
   private fun isCorrectRequest() =

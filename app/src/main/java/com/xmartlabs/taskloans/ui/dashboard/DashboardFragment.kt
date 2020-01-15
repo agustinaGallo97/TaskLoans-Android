@@ -10,12 +10,6 @@ import kotlinx.android.synthetic.main.fragment_viewpager_tablayout.*
 
 @FragmentWithArgs
 class DashboardFragment : BaseFragment() {
-  companion object {
-    private const val PAGE_1 = 1
-    private const val PAGE_2 = 2
-    private const val PAGE_3 = 3
-  }
-
   override val layoutResId = R.layout.fragment_viewpager_tablayout
 
   private val adapter by lazy { ViewPagerAdapter(requireActivity()) }
@@ -26,15 +20,15 @@ class DashboardFragment : BaseFragment() {
     pager.adapter = adapter
     val tabLayoutMediator = TabLayoutMediator(tabLayout, pager,
         TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-          when (position + 1) {
-            PAGE_1 -> {
-              tab.setIcon(R.drawable.account_balance_24_px)
+          when (DashboardTabs.values()[position]) {
+            DashboardTabs.HOME -> {
+              tab.setIcon(DashboardTabs.HOME.iconResId)
             }
-            PAGE_2 -> {
-              tab.setIcon(R.drawable.calendar)
+            DashboardTabs.BALANCE -> {
+              tab.setIcon(DashboardTabs.BALANCE.iconResId)
             }
-            PAGE_3 -> {
-              tab.setIcon(R.drawable.friends)
+            DashboardTabs.FRIENDS -> {
+              tab.setIcon(DashboardTabs.FRIENDS.iconResId)
             }
           }
         })

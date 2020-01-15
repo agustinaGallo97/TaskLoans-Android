@@ -5,6 +5,5 @@ import com.xmartlabs.bigbang.ui.SingleFragmentActivity
 
 @HensonNavigable
 class DashboardActivity : SingleFragmentActivity() {
-
   override fun createFragment() = DashboardFragmentBuilder().build()
 }

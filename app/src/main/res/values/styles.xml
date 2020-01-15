@@ -51,7 +51,7 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="TextToolbarStyle" parent="@android:style/TextAppearance">
+    <style name="TextToolbarStyle" parent="@style/Widget.MaterialComponents.Toolbar">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">21.1sp</item>
         <item name="android:textStyle">bold</item>

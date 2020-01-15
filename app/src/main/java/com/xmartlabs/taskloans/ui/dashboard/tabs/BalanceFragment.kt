@@ -6,6 +6,5 @@ import com.xmartlabs.taskloans.R
 
 @FragmentWithArgs
 class BalanceFragment : BaseFragment() {
-
   override val layoutResId = R.layout.fragment_balance
 }

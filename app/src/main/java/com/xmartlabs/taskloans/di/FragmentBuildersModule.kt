@@ -2,7 +2,7 @@ package com.xmartlabs.taskloans.di
 
 import com.xmartlabs.taskloans.ui.dashboard.DashboardFragment
 import com.xmartlabs.taskloans.ui.dashboard.tabs.BalanceFragment
-import com.xmartlabs.taskloans.ui.dashboard.tabs.FriendsFragment
+import com.xmartlabs.taskloans.ui.dashboard.tabs.UserListFragment
 import com.xmartlabs.taskloans.ui.dashboard.tabs.HomeFragment
 import com.xmartlabs.taskloans.ui.onboarding.signin.SignInFragment
 import com.xmartlabs.taskloans.ui.onboarding.signup.SignUpFragment
@@ -29,7 +29,7 @@ abstract class FragmentBuildersModule {
   abstract fun contributeBalanceFragment(): BalanceFragment
 
   @ContributesAndroidInjector
-  abstract fun contributeFriendsFragment(): FriendsFragment
+  abstract fun contributeFriendsFragment(): UserListFragment
 
   @ContributesAndroidInjector
   abstract fun contributeDashboardFragment(): DashboardFragment
