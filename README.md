@@ -5,7 +5,7 @@ Please read through this README before start working.
 
 # Taskloans description
 
-TaskLoans is a project that consists of managing the washing of dishes in a company
+TaskLoans is a project that helps users in a specific company to keep track of dishwashing chores.
 
 ## Style guide
 
