@@ -42,9 +42,13 @@ class SignInFragment : BaseFragment() {
       Toast.makeText(context, App.context.resources.getString(R.string.error_incorrect_login), Toast.LENGTH_SHORT)
           .show()
 
-  private fun onSignInSuccess() =
-      Toast.makeText(context, App.context.resources.getString(R.string.sign_in_correctly), Toast.LENGTH_SHORT)
-          .show()
+  private fun onSignInSuccess() {
+    val intent = Henson.with(context)
+        .gotoDashboardActivity()
+        .build()
+        .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    startActivity(intent)
+  }
 
   private fun setUpListeners() {
     setUpLoginButtonListener()
