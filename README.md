@@ -1,7 +1,11 @@
-# Android Template project
+# Taskloans project
 
 This is [Xmartlabs](https://xmartlabs.com) Android Template project.
 Please read through this README before start working.
+
+# Taskloans description
+
+TaskLoans is a project that consists of managing the washing of dishes in a company
 
 ## Style guide
 
