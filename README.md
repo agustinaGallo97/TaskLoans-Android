@@ -14,7 +14,7 @@ when making contributions to this project.
 
 ## :link: Jira reference:
 
-https://androidtraining.atlassian.net/browse/AT-107
+https://androidtraining.atlassian.net
 
 ## :link: Zeplin reference:
 
