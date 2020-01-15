@@ -12,7 +12,7 @@ TaskLoans is a project that consists of managing the washing of dishes in a comp
 Please, remember to always use and follow our [style guide](https://github.com/xmartlabs/Android-Style-Guide)
 when making contributions to this project.
 
-## :link: Jira Tracker reference:
+## :link: Jira reference:
 
 https://androidtraining.atlassian.net/browse/AT-107
 
@@ -29,4 +29,3 @@ the changes, preferably more than one.
 Please request the review by creating a Pull Request. Always include
 a clear description of what the changes are. A basic template can be
 found [here](.github/PULL_REQUEST_TEMPLATE.md)
-
