@@ -15,16 +15,16 @@ class StartActivity : BaseAppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-//    val session = sessionRepository.session
-//    if (session == null) {
+    val session = sessionRepository.session
+    if (session == null) {
 //      // TODO: handle on start activity no session
     val intent = Henson.with(context)
         .gotoSignInActivity()
         .build()
         .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_CLEAR_TASK)
     startActivity(intent)
-//    } else {
-//      TODO("Handle on start activity with session")
-//    }
+    } else {
+      TODO("Handle on start activity with session")
+    }
   }
 }
