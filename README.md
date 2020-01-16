@@ -1,12 +1,24 @@
-# Android Template project
+# Taskloans project
 
 This is [Xmartlabs](https://xmartlabs.com) Android Template project.
 Please read through this README before start working.
+
+# Taskloans description
+
+TaskLoans is a project that helps users in a specific company to keep track of dishwashing chores.
 
 ## Style guide
 
 Please, remember to always use and follow our [style guide](https://github.com/xmartlabs/Android-Style-Guide)
 when making contributions to this project.
+
+## :link: Jira reference:
+
+https://androidtraining.atlassian.net
+
+## :link: Zeplin reference:
+
+https://app.zeplin.io/project/5b3530fdaa610b6f74a2568a/dashboard
 
 ## Code review process
 
