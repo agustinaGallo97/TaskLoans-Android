@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/darkish_purple</item>
         <item name="colorPrimaryDark">@color/darkish_purple</item>
         <item name="colorAccent">@color/darkish_purple</item>
@@ -20,21 +20,21 @@
     </style>
 
     <style name="TitleStyle" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">36sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="ButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="TextLinkStyle" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">0.02</item>
         <item name="android:lineSpacingExtra">33sp</item>
@@ -49,6 +49,13 @@
     <style name="TextFieldSignUp" parent="@android:style/TextAppearance">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextToolbarStyle" parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">21.1sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>
